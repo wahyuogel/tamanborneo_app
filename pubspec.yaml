@@ -1,0 +1,61 @@
+name: zoo_app
+description: A new Flutter project.
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# Read more about versioning at semver.org.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+  scoped_model: ^1.0.1
+  carousel_slider: ^1.0.1
+  firebase_auth: ^0.6.6
+  firebase_analytics: ^1.0.6
+  google_sign_in: ^3.2.4
+  flip_box_bar: ^0.2.0
+  cloud_firestore:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+  uses-material-design: true
+  assets:
+      - assets/images/zoo_logo.png
+      - assets/images/banner_fb_check_in.png
+      - assets/images/banner_ticket.png
+      - assets/images/banner_open.png
+      - assets/images/banner_map.png
+      - assets/images/home_nav_animal.jpg
+      - assets/images/loading.gif
+      - assets/images/attraction/delman.jpg
+      - assets/images/attraction/foto_satwa.jpg
+      - assets/images/attraction/kuda_poni.jpg
+      - assets/images/attraction/kuda_tunggang.jpg
+      - assets/images/attraction/mobil_remot.jpg
+      - assets/images/attraction/pasir_boat.jpg
+      - assets/images/attraction/sepeda_anak.jpg
+      - assets/images/attraction/sepeda_dewasa.jpg
+  fonts:
+      - family: Poppins
+        fonts:
+          - asset: assets/fonts/Poppins-SemiBold.ttf
+            weight: 600
+          - asset: assets/fonts/Poppins-Regular.ttf
+            weight: 400
+      - family: Chewy
+        fonts:
+          - asset: assets/fonts/Chewy.ttf
+            weight: 600

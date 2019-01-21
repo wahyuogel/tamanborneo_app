@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "911309514233",
+    "firebase_url": "https://taman-borneo-beta.firebaseio.com",
+    "project_id": "taman-borneo-beta",
+    "storage_bucket": "taman-borneo-beta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911309514233:android:138f6b0337bea348",
+        "android_client_info": {
+          "package_name": "com.ideastic.tamanborneo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911309514233-bqj9v2m52kcbovotg7v35ss41u9oa9qk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ideastic.tamanborneo",
+            "certificate_hash": "dd4d0df34f08fb69f80789814595f2dd2964f9ba"
+          }
+        },
+        {
+          "client_id": "911309514233-8ch362h1poh5fonb8b8fp7bkrra4pim0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGb5gs9RKefZpe940F_guiPMiStQM9uNs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911309514233-8ch362h1poh5fonb8b8fp7bkrra4pim0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
