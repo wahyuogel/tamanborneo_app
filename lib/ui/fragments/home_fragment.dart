@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/ui/components/home/home_carousel.dart';
 import 'package:zoo_app/ui/components/home/home_ticket_banner.dart';
 import 'package:zoo_app/resources/app_strings.dart';
+import 'package:zoo_app/routes/app_route.dart';
 
 class HomePanel extends StatelessWidget {
   @override
@@ -88,7 +89,9 @@ class HomePanel extends StatelessWidget {
 
                 ],
               ),
-            ), onTap: () {})
+            ), onTap: () {
+              AppRoute.goToMapsPage(context);
+        })
     );
   }
 

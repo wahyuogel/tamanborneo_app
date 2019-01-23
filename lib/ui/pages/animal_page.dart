@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimalPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     final controller = PageController(
@@ -33,10 +34,16 @@ class HeadingSection extends StatelessWidget {
           ),
           Positioned(
             top: 36.0,
-            child: FlatButton.icon(onPressed: () {
-              Navigator.pop(context);
-            }, icon: Icon(Icons.arrow_back_ios, color: Colors.white,),
-                label: Text("")),
+            left: 20.0,
+            child: FloatingActionButton(
+              elevation: 0,
+              mini: true,
+              backgroundColor: Colors.green,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.arrow_back_ios),
+            ),
           ),
           Positioned(
             left: 36.0,

@@ -24,6 +24,7 @@ dependencies:
   google_sign_in: ^3.2.4
   flip_box_bar: ^0.2.0
   cloud_firestore:
+  google_maps_flutter:
 
 dev_dependencies:
   flutter_test:

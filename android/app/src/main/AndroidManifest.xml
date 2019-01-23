@@ -16,6 +16,8 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="zoo_app"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCzL6lHkjQjmGheTp2WDRRDcavQDW26Qgo"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
