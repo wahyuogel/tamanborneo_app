@@ -3,8 +3,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapsPage extends StatelessWidget {
 
-  GoogleMapController mapController;
-
   @override
   Widget build(BuildContext context) {
     return Container(

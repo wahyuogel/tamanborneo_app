@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import './profile_page_route.dart';
 import './animal_page_route.dart';
 import './maps_page_route.dart';
+import './web_page_route.dart';
 
 class AppRoute{
   static void goToProfilePage(BuildContext context, FirebaseUser user){
@@ -16,5 +17,9 @@ class AppRoute{
 
   static void goToMapsPage(BuildContext context){
     Navigator.push(context, MapsPageRoute());
+  }
+
+  static void goToWebPage(BuildContext context, String title, String url){
+    Navigator.push(context, WebPageRoute(title, url));
   }
 }

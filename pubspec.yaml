@@ -25,6 +25,7 @@ dependencies:
   flip_box_bar: ^0.2.0
   cloud_firestore:
   google_maps_flutter:
+  flutter_inappbrowser: ^0.5.51
 
 dev_dependencies:
   flutter_test:

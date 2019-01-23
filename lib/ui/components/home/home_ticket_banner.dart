@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zoo_app/routes/app_route.dart';
+import 'package:zoo_app/resources/app_strings.dart';
+
 
 class HomeTicketBanner extends StatelessWidget{
   @override
@@ -17,7 +20,9 @@ class HomeTicketBanner extends StatelessWidget{
                           .width),
                 ],
               ),
-            ), onTap: () {})
+            ), onTap: () {
+              AppRoute.goToWebPage(context, Strings.vInfoBuyTicketOnline, "http://attendize.website/e/6124/ok");
+        })
     );
   }
 }

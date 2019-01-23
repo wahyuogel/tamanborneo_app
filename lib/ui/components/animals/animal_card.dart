@@ -48,7 +48,7 @@ class AnimalCard extends StatelessWidget {
                  ]
                  )),
            ),
-           onTap: (){AppRoute.goToAnimalDetailPage(context);},)
+           onTap: (){},)
 
            );
   }
