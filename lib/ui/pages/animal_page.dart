@@ -1,6 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AnimalPage extends StatelessWidget {
+
+  final DocumentSnapshot document;
+
+  AnimalPage(this.document);
+
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +18,7 @@ class AnimalPage extends StatelessWidget {
       controller: controller,
       scrollDirection: Axis.vertical,
       children: <Widget>[
-        HeadingSection(),
+        HeadingSection(document),
         DetailSection(),
       ],
     );
@@ -21,13 +27,18 @@ class AnimalPage extends StatelessWidget {
 
 
 class HeadingSection extends StatelessWidget {
+
+  final DocumentSnapshot document;
+
+  HeadingSection(this.document);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Stack(
         children: <Widget>[
-          Image.asset(
-            'assets/images/home_nav_animal.jpg',
+          Image.network(
+            this.document["image"],
             height: double.infinity,
             width: double.infinity,
             fit: BoxFit.cover,
@@ -48,49 +59,28 @@ class HeadingSection extends StatelessWidget {
           Positioned(
             left: 36.0,
             bottom: 54.0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text("Ayam Besaung",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 36.0,
-                      shadows: <Shadow>[
-                        Shadow(
-                          offset: Offset(10.0, 10.0),
-                          blurRadius: 3.0,
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        ),
-                        Shadow(
-                          offset: Offset(10.0, 10.0),
-                          blurRadius: 10.0,
-                          color: Color.fromARGB(125, 0, 0, 255),
-                        ),
-                      ]),
-                ),
-                Text("Ayamorpus Mampus",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Poppins',
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 24.0),
-                ),
-              ],
+            child: Text(this.document["name"],
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 36.0),
             ),
           ),
-          Positioned(
-              bottom: 2.0,
-              child: Align(
-                alignment: Alignment.center,
-                child: Icon(Icons.keyboard_arrow_down, color: Colors.white,)
-              )
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(padding: EdgeInsets.only(bottom: 10.0),
+                  child: FloatingActionButton(
+                    elevation: 0,
+                    mini: true,
+                    backgroundColor: Colors.green,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_drop_down_circle),
+                  ))
           )
-
         ],
       ),
     );

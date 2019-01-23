@@ -116,7 +116,7 @@ class AnimalFragmentState extends State<AnimalsFragment> {
           )),
     ),
         onTap: () {
-          AppRoute.goToAnimalDetailPage(context);
+          AppRoute.goToAnimalDetailPage(context,document);
         });
   }
 
