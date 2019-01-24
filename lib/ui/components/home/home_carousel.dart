@@ -9,7 +9,7 @@ final List<String> imgList = [
 
 final List child = map<Widget>(imgList, (index, i) {
   return Container(
-      margin: EdgeInsets.all(5.0),
+      margin: EdgeInsets.all(3.0),
       child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
           child: Stack(
@@ -35,12 +35,12 @@ final List child = map<Widget>(imgList, (index, i) {
                       ),
                       padding: EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 20.0),
-                      child: Text('',
+                      child: Text('Hola',
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18.0),
                       )
                   )
               ),

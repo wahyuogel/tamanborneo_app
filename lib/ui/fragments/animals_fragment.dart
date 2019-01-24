@@ -90,7 +90,7 @@ class AnimalFragmentState extends State<AnimalsFragment> {
               image: document["image"],
               fit: BoxFit.cover,
               height: 300,
-              placeholder: "assets/images/loading.gif",
+              placeholder: "assets/images/nophoto.gif",
             ),
             Align(alignment: Alignment.bottomCenter, child: Container(
               height: 30.0,

@@ -23,36 +23,48 @@ class WebPageState extends State<WebPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text("Open Web Page")),
-        body: Container(
-            height: MediaQuery
-                .of(context)
-                .size
-                .height,
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
-            child: InAppWebView(
-              initialUrl: "http://attendize.website/e/6124/ok",
-              initialHeaders: {
-              },
-              initialOptions: {
-              },
-              onWebViewCreated: (InAppWebViewController controller) {
-                webView = controller;
-              },
-              onLoadStart: (InAppWebViewController controller, String url) {
+    return  Container(
+        height: MediaQuery
+            .of(context)
+            .size
+            .height,
+        width: MediaQuery
+            .of(context)
+            .size
+            .width,
+        child: Stack(children: <Widget>[
+          InAppWebView(
+            initialUrl: "http://attendize.website/e/6124/ok",
+            initialHeaders: {
+            },
+            initialOptions: {
+            },
+            onWebViewCreated: (InAppWebViewController controller) {
+              webView = controller;
+            },
+            onLoadStart: (InAppWebViewController controller, String url) {
 
+            },
+            onProgressChanged: (InAppWebViewController controller,
+                int progress) {
+              setState(() {
+                this.progress = progress / 100;
+              });
+            },),
+          Positioned(
+            top: 36.0,
+            left: 20.0,
+            child: FloatingActionButton(
+              elevation: 0,
+              mini: true,
+              backgroundColor: Colors.green,
+              onPressed: () {
+                Navigator.pop(context);
               },
-              onProgressChanged: (InAppWebViewController controller,
-                  int progress) {
-                setState(() {
-                  this.progress = progress / 100;
-                });
-              },)
-        ));
+              child: Icon(Icons.arrow_back_ios),
+            ),
+          ),
+        ]));
   }
 
 
