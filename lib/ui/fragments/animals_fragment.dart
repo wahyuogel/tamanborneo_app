@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:zoo_app/resources/app_colors.dart';
-import 'package:zoo_app/routes/app_route.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:zoo_app/ui/components/animals/animal_card.dart';
 
 class AnimalsFragment extends StatefulWidget {
   @override
@@ -29,7 +27,7 @@ class AnimalFragmentState extends State<AnimalsFragment> {
                     crossAxisCount: 2,
                     children: List.generate(
                         snapshot.data.documents.length, (index) {
-                      return _buildAnimalCard(snapshot.data.documents[index]);
+                      return AnimalCard(snapshot.data.documents[index]);
                     }));
               }
               return Container(
@@ -77,47 +75,6 @@ class AnimalFragmentState extends State<AnimalsFragment> {
                 fontSize: 14.0),
           ),
         )).toList();
-  }
-
-  Widget _buildAnimalCard(DocumentSnapshot document) {
-    return GestureDetector(child: Padding(
-      padding: EdgeInsets.all(4.0),
-      child: ClipRRect(
-          borderRadius: BorderRadius.circular(6.0),
-          child: Stack(children: <Widget>
-          [
-            FadeInImage.assetNetwork(
-              image: document["image"],
-              fit: BoxFit.cover,
-              height: 300,
-              placeholder: "assets/images/nophoto.gif",
-            ),
-            Align(alignment: Alignment.bottomCenter, child: Container(
-              height: 30.0,
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
-              decoration: BoxDecoration(
-                  color: AppColors.primary
-              ),
-              child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    document["name"],
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12.0),
-                  )),),
-            )
-          ]
-          )),
-    ),
-        onTap: () {
-          AppRoute.goToAnimalDetailPage(context,document);
-        });
   }
 
 }

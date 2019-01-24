@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AttractionCard extends StatelessWidget {
 
-  final String asset;
+  final DocumentSnapshot document;
 
-  AttractionCard(this.asset);
+  AttractionCard(this.document);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,12 @@ class AttractionCard extends StatelessWidget {
           height: 200.0,
           child: ClipRRect(
               borderRadius: BorderRadius.circular(6.0),
-              child: Image.asset(asset, fit: BoxFit.cover,)
+              child: FadeInImage.assetNetwork(
+                image: document["image"],
+                fit: BoxFit.cover,
+                height: 400,
+                placeholder: "assets/images/nophoto.gif",
+              )
           ),
         )
     );

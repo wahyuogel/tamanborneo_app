@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:zoo_app/ui/components/attraction/attraction_card.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AttractionFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 3,
-      padding: EdgeInsets.all(3.0),
-      childAspectRatio: 6.0 / 9.0,
-      children: <Widget>[
-        AttractionCard("assets/images/attraction/delman.jpg"),
-        AttractionCard("assets/images/attraction/kuda_poni.jpg"),
-        AttractionCard("assets/images/attraction/kuda_tunggang.jpg"),
-        AttractionCard("assets/images/attraction/mobil_remot.jpg"),
-        AttractionCard("assets/images/attraction/pasir_boat.jpg"),
-        AttractionCard("assets/images/attraction/sepeda_anak.jpg"),
-        AttractionCard("assets/images/attraction/sepeda_dewasa.jpg"),
-        AttractionCard("assets/images/attraction/foto_satwa.jpg"),
-      ],
-    );
+    return Container(
+        child: StreamBuilder(
+            stream: Firestore.instance.collection("attraction").snapshots(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData && snapshot.data.documents != null) {
+                return GridView.count(
+                    crossAxisCount: 3,
+                    childAspectRatio: 6.0 / 9.0,
+                    children: List.generate(
+                        snapshot.data.documents.length, (index) {
+                      return AttractionCard(snapshot.data.documents[index]);
+                    }));
+              }
+              return Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: Center(
+                  child: Image.asset("assets/images/loading.gif"),
+                ),
+              );
+            }
+        ));
   }
 }
 
