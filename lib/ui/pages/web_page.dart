@@ -27,7 +27,7 @@ class WebPageState extends State<WebPage> {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return SafeArea(child: Container(
         height: MediaQuery
             .of(context)
             .size
@@ -64,7 +64,7 @@ class WebPageState extends State<WebPage> {
               child: Icon(Icons.arrow_back_ios),
             ),
           ),
-        ]));
+        ])));
   }
 
 

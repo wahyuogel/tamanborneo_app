@@ -5,7 +5,7 @@ class MapsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SafeArea(child: Container(
         height: MediaQuery
             .of(context)
             .size
@@ -41,6 +41,6 @@ class MapsPage extends StatelessWidget {
             )
           ],
         )
-    );
+    ));
   }
 }
