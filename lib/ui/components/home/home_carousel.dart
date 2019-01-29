@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zoo_app/helper/MapHelper.dart';
+import 'package:zoo_app/helper/map_helper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
