@@ -23,3 +23,9 @@ class AppRoute{
     Navigator.push(context, WebPageRoute(title, url));
   }
 }
+
+class BaseRoute<T> extends MaterialPageRoute<Null> {
+  BaseRoute(K,V) : super(builder: (BuildContext context) {
+    return null;
+  });
+}
