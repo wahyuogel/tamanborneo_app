@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:zoo_app/resources/app_colors.dart';
 import 'package:zoo_app/resources/app_strings.dart';
+import 'package:zoo_app/routes/app_route.dart';
 
 class AnimalPage extends StatelessWidget {
 
@@ -135,41 +136,49 @@ class DetailSection extends StatelessWidget {
 
   Widget _buildMapsButton(BuildContext context){
     return Positioned(
-      bottom: 10.0,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 50.0,
-        padding: EdgeInsets.only(left:10.0,right: 10.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(6.0),
-          child: Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
-            padding: EdgeInsets.all(10.0),
-            child: Row(
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: <Widget>[
-               Icon(Icons.map,color: Colors.white,),
-               Padding(
-                 padding: EdgeInsets.only(left:10.0),
-                 child: Text("Temukan satwa ini di Peta",
-                   textAlign: TextAlign.center,
-                   style: TextStyle(
-                       color: Colors.white,
-                       fontFamily: 'Chewy',
-                       fontWeight: FontWeight.w600,
-                       fontSize: 24.0),
-                 ),
-               )
+        bottom: 10.0,
+        child: Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          height: 50.0,
+          padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          child: GestureDetector(
+            onTap: () {
+              AppRoute.goToMapsPage(context);
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(6.0),
+              child: Container(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width,
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(Icons.map, color: Colors.white,),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: Text("Temukan satwa ini di Peta",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Chewy',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 24.0),
+                      ),
+                    )
 
-             ],
+                  ],
+                ),
+                decoration: BoxDecoration(color: Colors.green),
+              ),
             ),
-            decoration: BoxDecoration(color: Colors.green),
           ),
-        ),
-      ),
+        )
     );
   }
 
