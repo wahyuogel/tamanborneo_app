@@ -7,6 +7,6 @@ class WebPageRoute extends MaterialPageRoute<Null> {
   final String url;
 
   WebPageRoute(this.title,this.url) : super(builder: (BuildContext context) {
-    return WebPage(title: title, url: url);
+    return WebPage(title,url);
   });
 }

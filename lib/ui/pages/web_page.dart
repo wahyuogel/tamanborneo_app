@@ -3,18 +3,22 @@ import 'package:flutter_inappbrowser/flutter_inappbrowser.dart';
 
 class WebPage extends StatefulWidget {
 
-  String title;
-  String url;
+  final String title;
+  final String url;
 
-  WebPage({Key key, title, url}) : super(key : key);
+  WebPage(this.title,this.url);
 
   @override
-  State<StatefulWidget> createState() => WebPageState();
+  State<StatefulWidget> createState() => WebPageState(this.title,this.url);
 }
 
 class WebPageState extends State<WebPage> {
   InAppWebViewController webView;
   double progress = 0;
+  final String title;
+  final String url;
+
+  WebPageState(this.title,this.url);
 
   @override
   void dispose() {
@@ -34,17 +38,13 @@ class WebPageState extends State<WebPage> {
             .width,
         child: Stack(children: <Widget>[
           InAppWebView(
-            initialUrl: "http://attendize.website/e/6124/ok",
-            initialHeaders: {
-            },
-            initialOptions: {
-            },
+            initialUrl: this.url,
+            initialHeaders: {},
+            initialOptions: {},
             onWebViewCreated: (InAppWebViewController controller) {
               webView = controller;
             },
-            onLoadStart: (InAppWebViewController controller, String url) {
-
-            },
+            onLoadStart: (InAppWebViewController controller, String url) {},
             onProgressChanged: (InAppWebViewController controller,
                 int progress) {
               setState(() {
