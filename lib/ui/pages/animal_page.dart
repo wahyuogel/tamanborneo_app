@@ -75,17 +75,13 @@ class HeadingSection extends StatelessWidget {
                 ),
                 Align(
                     alignment: Alignment.bottomCenter,
-                    child: Padding(padding: EdgeInsets.only(bottom: 10.0),
-                        child: FloatingActionButton(
-                          elevation: 0,
-                          mini: true,
-                          backgroundColor: Colors.green,
-                          onPressed: () {
-                            controller.jumpToPage(1);
-                          },
-                          child: Icon(Icons.arrow_drop_down_circle),
-                        ))
-                )
+                    child: Padding(padding: EdgeInsets.only(bottom: 5.0),
+                        child: Image.asset(
+                          "assets/images/arrow_down.gif",
+                          width: 60.0,
+                          height: 60.0,)
+                    ),
+                ),
               ],
             ),
 
@@ -121,13 +117,58 @@ class DetailSection extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 10.0),
       decoration: BoxDecoration(color: Color(0xFFFFFDE7)),
-      child: Column(
+      child: Stack(
         children: <Widget>[
-          _buildRowSizeInfo(document),
-          _buildRowLivedInInfo(context, document),
-          _buildConservationStatusInfo(context, document),
-          _buildFactInfo(context, document),
+          Column(
+            children: <Widget>[
+              _buildRowSizeInfo(document),
+              _buildRowLivedInInfo(context, document),
+              _buildConservationStatusInfo(context, document),
+              _buildFactInfo(context, document),
+            ],
+          ),
+          _buildMapsButton(context)
         ],
+      )
+    );
+  }
+
+  Widget _buildMapsButton(BuildContext context){
+    return Positioned(
+      bottom: 10.0,
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: 50.0,
+        padding: EdgeInsets.only(left:10.0,right: 10.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(6.0),
+          child: Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            padding: EdgeInsets.all(10.0),
+            child: Row(
+             mainAxisAlignment: MainAxisAlignment.center,
+             children: <Widget>[
+               Icon(Icons.map,color: Colors.white,),
+               Padding(
+                 padding: EdgeInsets.only(left:10.0),
+                 child: Text("Temukan satwa ini di Peta",
+                   textAlign: TextAlign.center,
+                   style: TextStyle(
+                       color: Colors.white,
+                       fontFamily: 'Chewy',
+                       fontWeight: FontWeight.w600,
+                       fontSize: 24.0),
+                 ),
+               )
+
+             ],
+            ),
+            decoration: BoxDecoration(color: Colors.green),
+          ),
+        ),
       ),
     );
   }

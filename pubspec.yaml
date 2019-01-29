@@ -43,6 +43,7 @@ flutter:
       - assets/images/home_nav_animal.jpg
       - assets/images/loading.gif
       - assets/images/nophoto.gif
+      - assets/images/arrow_down.gif
       - assets/images/attraction/delman.jpg
       - assets/images/attraction/foto_satwa.jpg
       - assets/images/attraction/kuda_poni.jpg
