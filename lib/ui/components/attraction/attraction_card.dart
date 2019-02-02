@@ -1,8 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:zoo_app/routes/app_route.dart';
 
 class AttractionCard extends StatelessWidget {
-
   final DocumentSnapshot document;
 
   AttractionCard(this.document);
@@ -10,7 +10,9 @@ class AttractionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          AppRoute.goToAttractionPage(context, document);
+        },
         child: Container(
           padding: EdgeInsets.all(5.0),
           child: ClipRRect(
@@ -28,37 +30,29 @@ class AttractionCard extends StatelessWidget {
                       child: Container(
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                colors: [
-                                  Color.fromARGB(200, 0, 0, 0),
-                                  Color.fromARGB(0, 0, 0, 0)
-                                ],
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.center,
-                              )
-                          ),
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
-                          height: MediaQuery
-                              .of(context)
-                              .size
-                              .height,
+                            colors: [
+                              Color.fromARGB(200, 0, 0, 0),
+                              Color.fromARGB(0, 0, 0, 0)
+                            ],
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.center,
+                          )),
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
                           padding: EdgeInsets.only(bottom: 20.0),
                           child: Align(
                             alignment: Alignment.bottomCenter,
-                            child: Text(document["name"], style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'Chewy',
-                                fontWeight: FontWeight.w200,
-                                fontSize: 14.0),),
-                          )
-                      )
-                  )
+                            child: Text(
+                              document["name"],
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w200,
+                                  fontSize: 12.0),
+                            ),
+                          )))
                 ],
-              )
-          ),
-        )
-    );
+              )),
+        ));
   }
 }

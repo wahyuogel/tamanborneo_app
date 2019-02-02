@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:zoo_app/ui/components/common/app_back_button.dart';
 
 class MapsPage extends StatelessWidget {
 
@@ -26,19 +27,7 @@ class MapsPage extends StatelessWidget {
                 );
               },
             ),
-            Positioned(
-              top: 36.0,
-              left: 20.0,
-              child: FloatingActionButton(
-                elevation: 0,
-                mini: true,
-                backgroundColor: Colors.green,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.arrow_back_ios),
-              ),
-            )
+            AppBackButton()
           ],
         )
     ));

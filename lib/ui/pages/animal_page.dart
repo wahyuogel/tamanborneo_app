@@ -1,8 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:zoo_app/resources/app_colors.dart';
 import 'package:zoo_app/resources/app_strings.dart';
 import 'package:zoo_app/routes/app_route.dart';
+import 'package:zoo_app/ui/components/common/app_back_button.dart';
 
 class AnimalPage extends StatelessWidget {
 
@@ -87,20 +88,8 @@ class HeadingSection extends StatelessWidget {
             ),
 
           ),
-          Positioned(
-            top: 36.0,
-            left: 20.0,
-            child: FloatingActionButton(
-              elevation: 0,
-              heroTag: null,
-              mini: true,
-              backgroundColor: Colors.green,
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Icon(Icons.arrow_back_ios),
-            ),
-          ),
+         
+               AppBackButton(),
         ],
       ),
     );
@@ -318,7 +307,7 @@ class DetailSection extends StatelessWidget {
                       fontSize: 12.0),
                 ),
               ),
-              Text("20 M",
+              Text("${document['height']} m",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: AppColors.primary,
@@ -344,7 +333,7 @@ class DetailSection extends StatelessWidget {
                       fontSize: 12.0),
                 ),
               ),
-              Text("20 Kg",
+              Text("${document['weight']} Kg",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: AppColors.primary,
