@@ -3,6 +3,7 @@ import 'package:zoo_app/routes/app_route.dart';
 import 'package:zoo_app/helper/map_helper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:zoo_app/resources/app_constants.dart';
 
 class HomeCarousel extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _HomeCarouselState extends State<HomeCarousel> {
 
   Widget _buildStream(){
     return StreamBuilder(
-        stream: Firestore.instance.collection("promo").snapshots(),
+        stream: Firestore.instance.collection(AppConstants.promoCollection).snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data.documents != null) {
             return _buildCarousel(List.generate(

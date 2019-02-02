@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:zoo_app/ui/components/animals/animal_card.dart';
+import 'package:zoo_app/resources/app_constants.dart';
 
 class AnimalsFragment extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class AnimalFragmentState extends State<AnimalsFragment> {
         Container(
             padding: EdgeInsets.only(top: 40.0),
             child: StreamBuilder(
-            stream: Firestore.instance.collection("animal").snapshots(),
+            stream: Firestore.instance.collection(AppConstants.animalCollection).snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data.documents != null) {
                 return GridView.count(

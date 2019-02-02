@@ -43,6 +43,8 @@ class Strings {
   static String profileNavSettingSubtitle = "Atur Bahasa";
   static String profileNavAboutAppTitle = "Tentang Aplikasi";
   static String profileNavAboutAppSubtitle = "Versi Aplikasi, Kirim Masukan";
+  static String profileNavTocAppTitle = "Syarat dan Ketentuan";
+  static String profileNavTocAppSubtitle = "Syarat dan ketentuan aplikasi";
 
 
   static String animalInfoWeight = "Satwa ini bisa memiliki berat sampai";

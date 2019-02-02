@@ -40,16 +40,29 @@ class ProfileFragmentState extends State<ProfileFragment> {
           _buildUserLoggedStatusLabel(),
           _buildUserLoggedRowButtons(),
           Divider(),
-          _buildProfileMenuNavigation(
+          GestureDetector(child: _buildProfileMenuNavigation(
               Strings.profileNavSettingTitle,
               Strings.profileNavSettingTitle,
               Icons.settings),
+              onTap: (){
+                
+              },),
           Divider(),
-          _buildProfileMenuNavigation(
+         GestureDetector(child: _buildProfileMenuNavigation(
               Strings.profileNavAboutAppTitle,
               Strings.profileNavAboutAppSubtitle,
               Icons.info_outline),
+              onTap: (){
+
+              },),
           Divider(),
+          GestureDetector(child:_buildProfileMenuNavigation(
+              Strings.profileNavTocAppTitle,
+              Strings.profileNavTocAppSubtitle,
+              Icons.copyright),
+              onTap: (){
+
+              },) 
         ],
       ),
     );
@@ -184,6 +197,8 @@ class ProfileFragmentState extends State<ProfileFragment> {
           fontSize: 12.0)),
     );
   }
+
+  
 
 /*  */
 }

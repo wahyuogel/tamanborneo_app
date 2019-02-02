@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zoo_app/resources/app_colors.dart';
-import 'package:zoo_app/routes/app_route.dart';
 
 class PanelBar extends StatelessWidget {
 
