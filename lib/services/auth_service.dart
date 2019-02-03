@@ -1,16 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
 
 class AuthService {
-
   static FirebaseUser kUser;
   static FirebaseAnalytics kFirebaseAnalytics = FirebaseAnalytics();
   static FirebaseAuth kFirebaseAuth = FirebaseAuth.instance;
   static GoogleSignIn kGoogleSignIn = GoogleSignIn();
+  static FacebookLogin facebookSignIn = FacebookLogin();
   static final authWithGoogle = _googleSignIn;
   static final authAnonymousLy = _anonymousSignIn();
+  static final authWithFB = _facebookSignIn();
   static final authLogOut = _signOut();
   static final currentUser = _getCurrentUser();
 
@@ -53,12 +55,33 @@ class AuthService {
     return user;
   }
 
+  // Sign in facebook
+  static Future<FirebaseUser> _facebookSignIn() async {
+    final currentUser = AuthService.kUser ?? await kFirebaseAuth.currentUser();
+    if (currentUser != null && currentUser.isAnonymous) {
+      return currentUser;
+    }
+    kFirebaseAuth.signOut();
+    final FacebookLoginResult result =
+        await facebookSignIn.logInWithReadPermissions(['email','public_profile']);
+    final user = await kFirebaseAuth.signInWithFacebook(
+        accessToken: result.accessToken.token);
+    final userInfo = UserUpdateInfo();
+    userInfo.displayName = '${user.displayName}';
+    await user.updateProfile(userInfo);
+    await user.reload();
+    final recentUser = AuthService._getCurrentUser();
+    kFirebaseAnalytics.logLogin();
+    return recentUser;
+  }
+
   static Future<Null> _signOut() async {
     kUser = null;
+    await facebookSignIn.logOut();
     kFirebaseAuth.signOut();
   }
 
-  static Future<FirebaseUser> _getCurrentUser() async{
+  static Future<FirebaseUser> _getCurrentUser() async {
     return await kFirebaseAuth.currentUser();
   }
 }

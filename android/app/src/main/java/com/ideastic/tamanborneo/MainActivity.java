@@ -1,4 +1,4 @@
-package com.example.zooapp;
+package com.ideastic.tamanborneo;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

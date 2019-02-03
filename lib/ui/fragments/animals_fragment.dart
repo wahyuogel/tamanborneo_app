@@ -44,40 +44,40 @@ class AnimalFragmentState extends State<AnimalsFragment> {
     // _buildFilterDropdown()
   }
 
-  Widget _buildFilterDropdown() {
-    return Container(
-        height: 45.0,
-        decoration: BoxDecoration(color: Colors.white),
-        child: Align(
-          alignment: Alignment.centerRight,
-          child: Padding(
-            child: DropdownButton<String>(
-              value: selectedItem,
-              items: animalsPanelFilterItems(),
-              onChanged: (String newValue) {
-                setState(() {
-                  selectedItem = newValue;
-                });
-              },
-            ),
-            padding: EdgeInsets.only(right: 15.0),
-          ),
-        ));
-  }
+  // Widget _buildFilterDropdown() {
+  //   return Container(
+  //       height: 45.0,
+  //       decoration: BoxDecoration(color: Colors.white),
+  //       child: Align(
+  //         alignment: Alignment.centerRight,
+  //         child: Padding(
+  //           child: DropdownButton<String>(
+  //             value: selectedItem,
+  //             items: animalsPanelFilterItems(),
+  //             onChanged: (String newValue) {
+  //               setState(() {
+  //                 selectedItem = newValue;
+  //               });
+  //             },
+  //           ),
+  //           padding: EdgeInsets.only(right: 15.0),
+  //         ),
+  //       ));
+  // }
 
-  List<DropdownMenuItem<String>> animalsPanelFilterItems() {
-    return mapItems
-        .map((String value) => DropdownMenuItem<String>(
-              value: value,
-              child: Text(
-                value,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.0),
-              ),
-            ))
-        .toList();
-  }
+  // List<DropdownMenuItem<String>> animalsPanelFilterItems() {
+  //   return mapItems
+  //       .map((String value) => DropdownMenuItem<String>(
+  //             value: value,
+  //             child: Text(
+  //               value,
+  //               style: TextStyle(
+  //                   color: Colors.black,
+  //                   fontFamily: 'Poppins',
+  //                   fontWeight: FontWeight.w400,
+  //                   fontSize: 14.0),
+  //             ),
+  //           ))
+  //       .toList();
+  // }
 }

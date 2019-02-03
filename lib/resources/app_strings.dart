@@ -45,6 +45,12 @@ class Strings {
   static String profileNavAboutAppSubtitle = "Versi Aplikasi, Kirim Masukan";
   static String profileNavTocAppTitle = "Syarat dan Ketentuan";
   static String profileNavTocAppSubtitle = "Syarat dan ketentuan aplikasi";
+  
+  static String profileDialogComingSoonTitle = "Fitur akan segera hadir";
+  static String profileDialogComingSoonContent = "Fitur atur bahasa sedang dalam pengembangan";
+
+  
+  static String profileDialogAboutContent = "Dikembangkan oleh Ideastic. Silahkan kirim masukan ke email : developer[at]tamanborneo.id";
 
 
   static String animalInfoWeight = "Satwa ini bisa memiliki berat sampai";

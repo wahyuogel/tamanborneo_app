@@ -26,6 +26,7 @@ dependencies:
   cloud_firestore:
   google_maps_flutter:
   flutter_inappbrowser: ^0.5.51
+  flutter_facebook_login: ^1.2.0
 
 dev_dependencies:
   flutter_test:

@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:zoo_app/resources/app_strings.dart';
+import 'package:zoo_app/resources/app_constants.dart';
+import 'package:zoo_app/routes/app_route.dart';
 import 'package:zoo_app/services/auth_service.dart';
-
 
 class ProfileFragment extends StatefulWidget {
   @override
@@ -45,7 +46,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
               Strings.profileNavSettingTitle,
               Icons.settings),
               onTap: (){
-                
+                _showLanguageDialog();
               },),
           Divider(),
          GestureDetector(child: _buildProfileMenuNavigation(
@@ -53,7 +54,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
               Strings.profileNavAboutAppSubtitle,
               Icons.info_outline),
               onTap: (){
-
+                _showAppInfoDialog();
               },),
           Divider(),
           GestureDetector(child:_buildProfileMenuNavigation(
@@ -61,7 +62,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
               Strings.profileNavTocAppSubtitle,
               Icons.copyright),
               onTap: (){
-
+                AppRoute.goToWebPage(context, Strings.profileNavTocAppTitle, AppConstants.tocURL);
               },) 
         ],
       ),
@@ -97,7 +98,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
           fontWeight: FontWeight.w400,
           fontSize: 10.0),),
       onPressed: () {
-        AuthService.authAnonymousLy
+        AuthService.authWithFB
           ..then((user) =>
               setState(() {
                 this.user = user;
@@ -198,7 +199,45 @@ class ProfileFragmentState extends State<ProfileFragment> {
     );
   }
 
+  void _showLanguageDialog() => showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(Strings.profileDialogComingSoonTitle),
+          content: Text(Strings.profileDialogComingSoonContent),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+
+    void _showAppInfoDialog() {
+
+      showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(Strings.appName),
+          content: Text(Strings.profileDialogAboutContent),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+    }
+
   
 
-/*  */
 }
