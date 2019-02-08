@@ -57,6 +57,7 @@ class Strings {
   static String animalInfoWeight = "Satwa ini bisa memiliki berat sampai";
   static String animalInfoHeight = "Satwa ini dapat tumbuh sepanjang";
   static String animalInfoLivedIn = "Satwa ini biasanya ditemukan di kawasan";
+  static String animalInfoConservationStatus = "Status konservasi satwa ini";
   static String animalInfoFact = "Beberapa fakta menarik mengenai Satwa ini";
 
 }

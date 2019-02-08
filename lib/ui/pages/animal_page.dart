@@ -64,15 +64,15 @@ class HeadingSection extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Positioned(
-                  left: 36.0,
+                  left: 32.0,
                   bottom: 54.0,
                   child: Text(this.document["name"],
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         color: Colors.white,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 36.0),
+                        fontFamily: 'Chewy',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 50.0),
                   ),
                 ),
                 Align(
@@ -163,7 +163,9 @@ class DetailSection extends StatelessWidget {
 
                   ],
                 ),
-                decoration: BoxDecoration(color: Colors.green),
+                decoration:BoxDecoration(gradient: LinearGradient(
+                  colors: <Color>[Colors.lightGreen, AppColors.primary],
+                )),
               ),
             ),
           ),
@@ -193,14 +195,14 @@ class DetailSection extends StatelessWidget {
                     .of(context)
                     .size
                     .width,
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(4.0),
                 child: Text(document["fact"],
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       color: Colors.grey,
                       fontFamily: 'Chewy',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 24.0),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16.0),
                 ),
               ),
             ],
@@ -219,7 +221,7 @@ class DetailSection extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Padding(child: Text(Strings.animalInfoLivedIn,
+              Padding(child: Text(Strings.animalInfoConservationStatus,
                 style: TextStyle(
                     color: Colors.black38,
                     fontFamily: 'Chewy',
@@ -240,7 +242,7 @@ class DetailSection extends StatelessWidget {
                         color: Colors.white,
                         fontFamily: 'Chewy',
                         fontWeight: FontWeight.w600,
-                        fontSize: 36.0),
+                        fontSize: 30.0),
                   ),
                   decoration: BoxDecoration(color: Colors.red),
                 ),
@@ -260,7 +262,7 @@ class DetailSection extends StatelessWidget {
                 .of(context)
                 .size
                 .width,
-            padding: EdgeInsets.only(top: 20.0, left: 12.0, bottom: 20.0),
+            padding: EdgeInsets.only(top: 15.0, left: 12.0, bottom: 15.0),
             decoration: BoxDecoration(color: Color(0xFFFDD835)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -280,7 +282,7 @@ class DetailSection extends StatelessWidget {
                       color: AppColors.primary,
                       fontFamily: 'Chewy',
                       fontWeight: FontWeight.w600,
-                      fontSize: 48.0),
+                      fontSize: 36.0),
                 )
               ],
             ),
