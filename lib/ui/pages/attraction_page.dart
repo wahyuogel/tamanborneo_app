@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:zoo_app/ui/components/common/app_back_button.dart';
 import 'package:zoo_app/routes/app_route.dart';
 import 'package:zoo_app/resources/app_constants.dart';
+import 'package:zoo_app/resources/app_colors.dart';
 
 class AttractionPage extends StatelessWidget {
   final DocumentSnapshot document;
@@ -25,7 +26,7 @@ class AttractionPage extends StatelessWidget {
                           Image.network(
                             this.document["image"],
                             width: MediaQuery.of(context).size.width,
-                            height: 300.0,
+                            height: 200.0,
                             fit: BoxFit.cover,
                           ),
                           _buildPriceTag(context, document)
@@ -77,9 +78,9 @@ class AttractionPage extends StatelessWidget {
         bottom: 20.0,
         right: 20.0,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(6.0),
+          borderRadius: BorderRadius.circular(3.0),
           child: Container(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(5.0),
             child: Text(
               "Rp. ${document['ticket_price']} / sekali main",
               textAlign: TextAlign.left,
@@ -87,7 +88,7 @@ class AttractionPage extends StatelessWidget {
                   color: Colors.white,
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w600,
-                  fontSize: 18.0),
+                  fontSize: 12.0),
             ),
             decoration: BoxDecoration(color: Colors.orangeAccent),
           ),
@@ -131,7 +132,9 @@ class AttractionPage extends StatelessWidget {
                     )
                   ],
                 ),
-                decoration: BoxDecoration(color: Colors.green),
+                decoration:BoxDecoration(gradient: LinearGradient(
+                  colors: <Color>[Colors.lightGreen, AppColors.primary],
+                )),
               ),
             ),
           ),
