@@ -49,8 +49,9 @@ class Strings {
   static String profileDialogComingSoonTitle = "Fitur akan segera hadir";
   static String profileDialogComingSoonContent = "Fitur atur bahasa sedang dalam pengembangan";
 
-  
-  static String profileDialogAboutContent = "Dikembangkan oleh Ideastic. Silahkan kirim masukan ke email : developer[at]tamanborneo.id";
+
+  static String profileDialogAboutTitle = "Tentang Aplikasi Taman Borneo";
+  static String profileDialogAboutContent = "Dikembangkan oleh Ideastic. Silahkan kirim masukan ke email : developer@tamanborneo.id";
 
 
   static String animalInfoWeight = "Satwa ini bisa memiliki berat sampai";

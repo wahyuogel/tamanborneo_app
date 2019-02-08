@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:zoo_app/ui/components/home/home_carousel.dart';
-import 'package:zoo_app/ui/components/home/home_ticket_banner.dart';
+import 'package:flutter/material.dart';
 import 'package:zoo_app/resources/app_strings.dart';
 import 'package:zoo_app/routes/app_route.dart';
+import 'package:zoo_app/ui/components/home/home_carousel.dart';
+import 'package:zoo_app/ui/components/home/home_ticket_banner.dart';
 
 class HomePanel extends StatelessWidget {
   @override
@@ -43,10 +43,10 @@ class HomePanel extends StatelessWidget {
   }
 
   Widget _buildCardMap(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.all(4.0),
-        child: GestureDetector(
-            child: ClipRRect(
+    return GestureDetector(
+        child: Container(
+        padding: EdgeInsets.only(left:4.0,right: 4.0, top: 6.0, bottom: 4.0),
+          child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Column(
                 children: <Widget>[
@@ -61,29 +61,29 @@ class HomePanel extends StatelessWidget {
                             Strings.homeMapLabel,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontFamily: 'Poppins',
+                                fontFamily: 'Chewy',
                                 fontWeight: FontWeight.w600,
-                                fontSize: 18.0),
+                                fontSize: 16.0),
                           ),
                           Text(
                             Strings.homeMapContent,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w600,
                                 fontSize: 12.0),
                           ),
                         ],
                       )),
-                  Image.asset("assets/images/banner_map.png",
+                  Image.asset("assets/images/banner_maps.png",
                       fit: BoxFit.fitWidth,
-                      height: 120,
+                      height: 150,
                       width: MediaQuery.of(context).size.width),
                 ],
               ),
             ),
-            onTap: () {
-              AppRoute.goToMapsPage(context);
-            }));
+        ), onTap: () {
+      AppRoute.goToMapsPage(context);
+    });
   }
 }

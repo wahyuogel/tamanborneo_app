@@ -66,8 +66,8 @@ class _HomeCarouselState extends State<HomeCarousel> {
                           child: Text(document["name"],
                             style: TextStyle(
                                 color: Colors.white,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Chewy',
+                                fontWeight: FontWeight.w400,
                                 fontSize: 18.0),
                           )
                       )

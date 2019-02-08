@@ -41,6 +41,7 @@ flutter:
       - assets/images/banner_ticket.png
       - assets/images/banner_open.png
       - assets/images/banner_map.png
+      - assets/images/banner_maps.png
       - assets/images/home_nav_animal.jpg
       - assets/images/loading.gif
       - assets/images/nophoto.gif

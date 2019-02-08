@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:zoo_app/resources/app_strings.dart';
 import 'package:zoo_app/resources/app_constants.dart';
+import 'package:zoo_app/resources/app_strings.dart';
 import 'package:zoo_app/routes/app_route.dart';
 import 'package:zoo_app/services/auth_service.dart';
 
@@ -203,8 +203,17 @@ class ProfileFragmentState extends State<ProfileFragment> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(Strings.profileDialogComingSoonTitle),
-          content: Text(Strings.profileDialogComingSoonContent),
+          title: Text(Strings.profileDialogComingSoonTitle, style: TextStyle(
+              color: Colors.black54,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w600,
+              fontSize: 16.0)),
+          content: Text(
+              Strings.profileDialogComingSoonContent, style: TextStyle(
+              color: Colors.black54,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w400,
+              fontSize: 12.0)),
           actions: <Widget>[
             FlatButton(
               child: Text("OK"),
@@ -223,8 +232,17 @@ class ProfileFragmentState extends State<ProfileFragment> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(Strings.appName),
-          content: Text(Strings.profileDialogAboutContent),
+          title: Text(Strings.profileDialogAboutTitle, style: TextStyle(
+              color: Colors.black54,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w600,
+              fontSize: 16.0)),
+          content: Text(
+              Strings.profileDialogAboutContent, style: TextStyle(
+              color: Colors.black54,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w400,
+              fontSize: 12.0)),
           actions: <Widget>[
             FlatButton(
               child: Text("OK"),
