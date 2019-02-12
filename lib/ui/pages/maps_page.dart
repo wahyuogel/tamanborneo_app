@@ -27,6 +27,10 @@ class MapsPage extends StatelessWidget {
                 );
               },
             ),
+            //TODO REMOVE AFTER DEMO
+            Center(child:   Container(
+                decoration: BoxDecoration(color: Colors.yellowAccent),
+                child: Text("Fitur ini masih dalam tahap pengembangan", textAlign: TextAlign.center)),),
             AppBackButton()
           ],
         )

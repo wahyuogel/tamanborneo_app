@@ -8,8 +8,8 @@ class AuthService {
   static FirebaseUser kUser;
   static FirebaseAnalytics kFirebaseAnalytics = FirebaseAnalytics();
   static FirebaseAuth kFirebaseAuth = FirebaseAuth.instance;
-  static GoogleSignIn kGoogleSignIn = GoogleSignIn();
-  static FacebookLogin facebookSignIn = FacebookLogin();
+  static GoogleSignIn kGoogleSignIn = new GoogleSignIn();
+  static FacebookLogin facebookSignIn = new FacebookLogin();
   static final authWithGoogle = _googleSignIn;
   static final authAnonymousLy = _anonymousSignIn();
   static final authWithFB = _facebookSignIn();
@@ -32,6 +32,7 @@ class AuthService {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
+    print("user name:${user.displayName}");
     kFirebaseAnalytics.logLogin();
     return user;
   }
@@ -61,18 +62,28 @@ class AuthService {
     if (currentUser != null && currentUser.isAnonymous) {
       return currentUser;
     }
-    kFirebaseAuth.signOut();
+    facebookSignIn.loginBehavior = FacebookLoginBehavior.webViewOnly;
     final FacebookLoginResult result =
-        await facebookSignIn.logInWithReadPermissions(['email','public_profile']);
-    final user = await kFirebaseAuth.signInWithFacebook(
-        accessToken: result.accessToken.token);
-    final userInfo = UserUpdateInfo();
-    userInfo.displayName = '${user.displayName}';
-    await user.updateProfile(userInfo);
-    await user.reload();
-    final recentUser = AuthService._getCurrentUser();
-    kFirebaseAnalytics.logLogin();
-    return recentUser;
+        await facebookSignIn.logInWithReadPermissions(['email']);
+    switch (result.status) {
+      case FacebookLoginStatus.loggedIn:
+        final user = await kFirebaseAuth.signInWithFacebook(
+            accessToken: result.accessToken.token);
+        final userInfo = UserUpdateInfo();
+        userInfo.displayName = '${user.displayName}';
+        await user.updateProfile(userInfo);
+        await user.reload();
+        final recentUser = AuthService._getCurrentUser();
+        kFirebaseAnalytics.logLogin();
+        return recentUser;
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        throw new Error();
+        break;
+      case FacebookLoginStatus.error:
+        throw new Error();
+        break;
+    }
   }
 
   static Future<Null> _signOut() async {

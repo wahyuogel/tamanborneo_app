@@ -34,6 +34,9 @@ class ProfileFragmentState extends State<ProfileFragment> {
     return Container(
       child: ListView(
         children: <Widget>[
+          Container(
+              decoration: BoxDecoration(color: Colors.yellowAccent),
+              child: Text("Fitur login & register masih dalam tahap pengembangan", textAlign: TextAlign.center)),
           Padding(padding: EdgeInsets.only(top: 15.0),
               child: CircleAvatar(maxRadius: 40.0,
                 backgroundColor: Colors.green,
@@ -104,7 +107,7 @@ class ProfileFragmentState extends State<ProfileFragment> {
                 this.user = user;
               }),
           )
-          ..catchError((e) => print(e));
+          ..catchError((e) => Scaffold.of(context).showSnackBar(SnackBar(content: Text(e.toString()))));
       },
     );
   }
