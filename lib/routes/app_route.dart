@@ -1,13 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import './profile_page_route.dart';
 import './animal_page_route.dart';
 import './maps_page_route.dart';
 import './web_page_route.dart';
 import './attraction_page_route.dart';
-import 'dart:io' show Platform;
+import 'package:zoo_app/resources/app_constants.dart';
 import 'dart:js' as js;
 
 class AppRoute {
@@ -25,13 +24,17 @@ class AppRoute {
   }
 
   static void goToMapsPage(BuildContext context) {
-    Navigator.push(context, MapsPageRoute());
+    if (kIsWeb) {
+      js.context.callMethod("open", [AppConstants.webURL + "/maps"]);
+    } else {
+      Navigator.push(context, MapsPageRoute());
+    }
   }
 
   static void goToWebPage(BuildContext context, String title, String url) {
-    if(kIsWeb) {
+    if (kIsWeb) {
       js.context.callMethod("open", [url]);
-    }else {
+    } else {
       Navigator.push(context, WebPageRoute(title, url));
     }
   }
