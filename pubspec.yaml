@@ -21,13 +21,14 @@ dependencies:
   carousel_slider: ^1.0.1
   firebase_core: ^0.4.0
 #  firebase_auth: ^0.6.6
-  firebase_analytics: ^1.0.6
-  google_sign_in: ^3.2.4
+#  firebase_analytics: ^1.0.6
+#  google_sign_in: ^3.2.4
   flip_box_bar: ^0.2.0
   cloud_firestore: ^0.13.0+1
   google_maps_flutter:
   flutter_inappwebview: 2.1.0+1
-  flutter_facebook_login: ^1.2.0
+#  flutter_facebook_login: ^1.2.0
+  universal_html: 1.1.11
 
 dev_dependencies:
   flutter_test:

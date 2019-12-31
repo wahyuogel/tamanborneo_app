@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:zoo_app/ui/components/attraction/attraction_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:zoo_app/resources/app_constants.dart';
-import 'dart:js' as js;
+import 'package:universal_html/prefer_universal/js.dart' as js;
 
 class AttractionFragment extends StatelessWidget {
   @override

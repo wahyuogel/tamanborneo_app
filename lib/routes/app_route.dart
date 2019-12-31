@@ -7,7 +7,7 @@ import './maps_page_route.dart';
 import './web_page_route.dart';
 import './attraction_page_route.dart';
 import 'package:zoo_app/resources/app_constants.dart';
-import 'dart:js' as js;
+import 'package:universal_html/prefer_universal/js.dart' as js;
 
 class AppRoute {
 //  static void goToProfilePage(BuildContext context, FirebaseUser user) {
