@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,6 +7,8 @@ import './animal_page_route.dart';
 import './maps_page_route.dart';
 import './web_page_route.dart';
 import './attraction_page_route.dart';
+import 'dart:io' show Platform;
+import 'dart:js' as js;
 
 class AppRoute {
 //  static void goToProfilePage(BuildContext context, FirebaseUser user) {
@@ -26,7 +29,11 @@ class AppRoute {
   }
 
   static void goToWebPage(BuildContext context, String title, String url) {
-    Navigator.push(context, WebPageRoute(title, url));
+    if(kIsWeb) {
+      js.context.callMethod("open", [url]);
+    }else {
+      Navigator.push(context, WebPageRoute(title, url));
+    }
   }
 
   static void goToAttractionPage(
