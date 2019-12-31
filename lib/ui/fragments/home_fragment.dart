@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zoo_app/resources/app_strings.dart';
 import 'package:zoo_app/routes/app_route.dart';
@@ -25,10 +26,15 @@ class HomeFragmentState extends State<HomeFragment> {
                 decoration: BoxDecoration(color: Colors.white),
                 child: Column(
                   children: <Widget>[
-                    HomeCarousel(),
+                    !kIsWeb
+                        ? HomeCarousel()
+                        : Row(children: [
+                            _buildCardRowNav(
+                                context, "assets/images/taman_borneo_banner.jpg")
+                          ]),
                     HomeTicketBanner(),
                     Row(
-                      children: <Widget>[
+                      children: [
                         _buildCardRowNav(
                             context, "assets/images/banner_open.png"),
                         _buildCardRowNav(

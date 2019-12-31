@@ -37,24 +37,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-      - assets/images/zoo_logo.png
-      - assets/images/banner_fb_check_in.png
-      - assets/images/banner_ticket.png
-      - assets/images/banner_open.png
-      - assets/images/banner_map.png
-      - assets/images/banner_maps.png
-      - assets/images/home_nav_animal.jpg
-      - assets/images/loading.gif
-      - assets/images/nophoto.gif
-      - assets/images/arrow_down.gif
-      - assets/images/attraction/delman.jpg
-      - assets/images/attraction/foto_satwa.jpg
-      - assets/images/attraction/kuda_poni.jpg
-      - assets/images/attraction/kuda_tunggang.jpg
-      - assets/images/attraction/mobil_remot.jpg
-      - assets/images/attraction/pasir_boat.jpg
-      - assets/images/attraction/sepeda_anak.jpg
-      - assets/images/attraction/sepeda_dewasa.jpg
+    - assets/images/
   fonts:
       - family: Poppins
         fonts:
