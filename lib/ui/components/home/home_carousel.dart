@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zoo_app/routes/app_route.dart';
 import 'package:zoo_app/helper/map_helper.dart';
@@ -13,28 +14,32 @@ class HomeCarousel extends StatefulWidget {
 class _HomeCarouselState extends State<HomeCarousel> {
   int _current = 0;
 
-  Widget _buildStream(){
-    return StreamBuilder(
-        stream: Firestore.instance.collection(AppConstants.promoCollection).snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData && snapshot.data.documents != null) {
-            return _buildCarousel(List.generate(
-                snapshot.data.documents.length, (index) {
-              return _buildCarouselItem(snapshot.data.documents[index]);
-            }));
-          }
-          return Container(
-            width: 100,
-            height: 100,
-            child: Center(
-              child: Image.asset("assets/images/loading.gif"),
-            ),
-          );
-        }
-    );
+  Widget _buildStream() {
+    if (kIsWeb) {
+      return Center();
+    } else
+      return StreamBuilder(
+          stream: Firestore.instance
+              .collection(AppConstants.promoCollection)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData && snapshot.data.documents != null) {
+              return _buildCarousel(
+                  List.generate(snapshot.data.documents.length, (index) {
+                return _buildCarouselItem(snapshot.data.documents[index]);
+              }));
+            }
+            return Container(
+              width: 100,
+              height: 100,
+              child: Center(
+                child: Image.asset("assets/images/loading.gif"),
+              ),
+            );
+          });
   }
 
-  Widget _buildCarouselItem(DocumentSnapshot document){
+  Widget _buildCarouselItem(DocumentSnapshot document) {
     return GestureDetector(
       child: Container(
           margin: EdgeInsets.all(3.0),
@@ -42,7 +47,8 @@ class _HomeCarouselState extends State<HomeCarousel> {
               borderRadius: BorderRadius.all(Radius.circular(5.0)),
               child: Stack(
                 children: <Widget>[
-                  Image.network(document["image"],
+                  Image.network(
+                    document["image"],
                     fit: BoxFit.fitWidth,
                     width: 1000.0,
                   ),
@@ -53,49 +59,43 @@ class _HomeCarouselState extends State<HomeCarousel> {
                       child: Container(
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                colors: [
-                                  Color.fromARGB(200, 0, 0, 0),
-                                  Color.fromARGB(0, 0, 0, 0)
-                                ],
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                              )
-                          ),
+                            colors: [
+                              Color.fromARGB(200, 0, 0, 0),
+                              Color.fromARGB(0, 0, 0, 0)
+                            ],
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                          )),
                           padding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 20.0),
-                          child: Text(document["name"],
+                          child: Text(
+                            document["name"],
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Chewy',
                                 fontWeight: FontWeight.w400,
                                 fontSize: 18.0),
-                          )
-                      )
-                  ),
+                          ))),
                 ],
-              )
-          )
-      ),
-      onTap: (){
+              ))),
+      onTap: () {
         AppRoute.goToWebPage(context, document["name"], document["url"]);
       },
     );
   }
 
-  Widget _buildCarousel(List<Widget> list){
-    return Stack(
-        children: [
-          CarouselSlider(
-            items: list,
-            autoPlay: true,
-            reverse: false,
-          ),
-          _buildCarouselIndicator(list)
-        ]
-    );
+  Widget _buildCarousel(List<Widget> list) {
+    return Stack(children: [
+      CarouselSlider(
+        items: list,
+        autoPlay: true,
+        reverse: false,
+      ),
+      _buildCarouselIndicator(list)
+    ]);
   }
 
-  Widget _buildCarouselIndicator(List<Widget> list){
+  Widget _buildCarouselIndicator(List<Widget> list) {
     return Container(
         padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
         child: Row(
@@ -104,18 +104,15 @@ class _HomeCarouselState extends State<HomeCarousel> {
             return Container(
               width: 8.0,
               height: 8.0,
-              margin: EdgeInsets.symmetric(
-                  vertical: 10.0, horizontal: 2.0),
+              margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _current == index
                       ? Colors.white
-                      : Color.fromRGBO(0, 0, 0, 0.4)
-              ),
+                      : Color.fromRGBO(0, 0, 0, 0.4)),
             );
           }),
-        )
-    );
+        ));
   }
 
   @override
